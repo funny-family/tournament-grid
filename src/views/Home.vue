@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <Grid-setter />
+    <Grid-setter
+      placeholder="Enter an even number"
+      type="text"
+      v-model="amountOfPlayers"
+    />
   </div>
 </template>
 
@@ -8,6 +12,9 @@
 import GridSetter from '@/components/inputs/GridSetter.vue';
 
 export default {
+  data: () => ({
+    amountOfPlayers: ''
+  }),
   components: {
     'Grid-setter': GridSetter
   }
