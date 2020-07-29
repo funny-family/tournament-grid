@@ -1,4 +1,4 @@
-# tournament-grid
+# tournament-bracket
 
 ## Project setup
 ```
