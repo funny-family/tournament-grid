@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'Numeric-input',
   props: {
     placeholder: {
       type: String,

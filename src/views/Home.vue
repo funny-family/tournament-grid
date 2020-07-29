@@ -30,8 +30,8 @@ export default {
     stringInputValue: ''
   }),
   components: {
-    'Numeric-input': NumericInput,
-    'Single-elimination-diagram': SingleEliminationDiagram
+    NumericInput,
+    SingleEliminationDiagram
   },
   computed: {
     numericInputValue() {
