@@ -1,7 +1,7 @@
 <template>
   <input
-    class="grid-setter"
-    ref="gridSetter"
+    class="numeric-input"
+    ref="numericInput"
     :placeholder="placeholder"
     :value="value"
     :type="type"
