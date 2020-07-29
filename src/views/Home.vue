@@ -17,13 +17,13 @@
       v-model="stringInputValue"
     />
     <div v-if="!isNaN(numericInputValue)">{{ numericInputValue }}</div>
-    <Tournament-grid />
+    <Single-elimination-diagram />
   </div>
 </template>
 
 <script>
 import NumericInput from '@/components/inputs/NumericInput.vue';
-import TournamentGrid from '@/components/diagrams/TournamentGrid.vue';
+import SingleEliminationDiagram from '@/components/diagrams/SingleEliminationDiagram.vue';
 
 export default {
   data: () => ({
@@ -31,7 +31,7 @@ export default {
   }),
   components: {
     'Numeric-input': NumericInput,
-    'Tournament-grid': TournamentGrid
+    'Single-elimination-diagram': SingleEliminationDiagram
   },
   computed: {
     numericInputValue() {
