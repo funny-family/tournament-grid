@@ -1,23 +1,12 @@
 <template>
   <div class="home">
-    <div class="table">
-      <div class="box aft"></div>
-      <div class="box"></div>
-    </div>
-    <hr>
-    <div>
-      <div class="tournament-grid">
-        фвфв
-      </div>
-    </div>
-    <hr>
     <Numeric-input
       placeholder="Enter an even number"
       type="text"
       v-model="stringInputValue"
     />
     <div v-if="!isNaN(numericInputValue)">{{ numericInputValue }}</div>
-    <Single-elimination-diagram />
+    <Single-elimination-diagram :diagramSize="numericInputValue" />
   </div>
 </template>
 
