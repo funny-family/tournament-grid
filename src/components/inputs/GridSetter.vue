@@ -6,6 +6,7 @@
     :value="value"
     :type="type"
     @input="updateInputValue($event.target.value)"
+    @keypress="onKeyPress"
   />
 </template>
 
@@ -28,6 +29,12 @@ export default {
     }
   },
   methods: {
+    onKeyPress(event) {
+      const char = String.fromCharCode(event.charCode);
+      if (!/[0-9]/.test(char)) { // or /^-?\d*$/
+        event.preventDefault();
+      }
+    },
     updateInputValue(value) {
       this.$emit('input', value);
     }
