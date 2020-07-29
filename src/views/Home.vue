@@ -11,28 +11,31 @@
       </div>
     </div>
     <hr>
-    <Grid-setter
+    <Numeric-input
       placeholder="Enter an even number"
       type="text"
-      v-model="inputValue"
+      v-model="stringInputValue"
     />
-    <div v-if="!isNaN(amountOfPlayers)">{{ amountOfPlayers }}</div>
+    <div v-if="!isNaN(numericInputValue)">{{ numericInputValue }}</div>
+    <Tournament-grid />
   </div>
 </template>
 
 <script>
-import GridSetter from '@/components/inputs/GridSetter.vue';
+import NumericInput from '@/components/inputs/NumericInput.vue';
+import TournamentGrid from '@/components/diagrams/TournamentGrid.vue';
 
 export default {
   data: () => ({
-    inputValue: ''
+    stringInputValue: ''
   }),
   components: {
-    'Grid-setter': GridSetter
+    'Numeric-input': NumericInput,
+    'Tournament-grid': TournamentGrid
   },
   computed: {
-    amountOfPlayers() {
-      return Number.parseInt(this.$data.inputValue, 10);
+    numericInputValue() {
+      return Number.parseInt(this.$data.stringInputValue, 10);
     }
   }
 };
