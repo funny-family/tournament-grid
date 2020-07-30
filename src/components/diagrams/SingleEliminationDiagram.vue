@@ -32,6 +32,13 @@ export default {
 </script>
 
 <style scoped>
+* {
+  --picton-blue: #2CA0EC;
+  --mercury: #E7E7E7;
+  --connecting-line-active: var(--picton-blue);
+  --connecting-line-not-active: var(--mercury);
+}
+
 *,
 *::after,
 *::before {
@@ -73,7 +80,7 @@ export default {
 .participant::before {
   content: '';
   min-height: 30px;
-  border-left: 2px solid red;
+  border-left: 2px solid var(--connecting-line-not-active);
   position: absolute;
   left: -10px;
   top: 50%;
@@ -84,8 +91,8 @@ export default {
 .participant:nth-child(odd)::after {
   content: '';
   border: 2px solid transparent;
-  border-top-color: red;
-  border-right-color: red;
+  border-top-color: var(--connecting-line-not-active);
+  border-right-color: var(--connecting-line-not-active);
   height: 50%;
   position: absolute;
   right: -10px;
@@ -97,9 +104,8 @@ export default {
 .participant:nth-child(even)::after {
   content: '';
   border: 2px solid transparent;
-  border-bottom-color: red;
-  border-right-color: red;
-  border-radius: 0%;
+  border-bottom-color: var(--connecting-line-not-active);
+  border-right-color: var(--connecting-line-not-active);
   height: 50%;
   position: absolute;
   right: -10px;
@@ -110,8 +116,8 @@ export default {
 
 .participant__content::before {
   content: '';
-  width: 10px;
-  border-bottom: 2px solid red;
+  width: 12px;
+  border-bottom: 2px solid var(--connecting-line-not-active);
   margin-left: -2px;
   position: absolute;
   top: 50%;
@@ -119,11 +125,14 @@ export default {
 }
 
 .participant__content {
-  border: 2px solid green;
-  background-color: aquamarine;
   width: 100%;
   min-width: 60px;
   height: 40px;
   position: relative;
+  border-radius: 50px;
+  background-color: white;
+  -webkit-box-shadow: 0px 3px 15px -4px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 3px 15px -4px rgba(0,0,0,0.42);
+  box-shadow: 0px 3px 15px -4px rgba(0,0,0,0.42);
 }
 </style>
