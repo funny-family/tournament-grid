@@ -44,5 +44,14 @@ export default {
 </script>
 
 <style scoped>
+input {
+  box-sizing: border-box;
+}
 
+.numeric-input {
+  padding: 8px 12px;
+  width: 300px;
+  height: 40px;
+  font-size: 18px;
+}
 </style>
