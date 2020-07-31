@@ -6,6 +6,7 @@
         :class="['column-' + columnIndex]"
         :key="columnIndex"
       >
+        {{ participantNames }}
         columns: {{ columns }}
         <template v-for="(participantPosiitonInColumn, participantIndex) in participants">
           <div
@@ -17,16 +18,17 @@
               <input
                 class="participant__content__input"
                 type="text"
-                placeholder="Participant name"
+                v-model="participantNames[participantIndex]"
+                placeholder="Participant`s name"
                 v-if="Math.max(...columns) === participants"
               />
-              <br/>
+              <!-- <br/>
               participantIndex: {{ participantIndex }}
               <br/>
               participantPosiitonInColumn: {{ participantPosiitonInColumn }}
               <br/>
               participants: {{ participants }}
-              <br/>
+              <br/> -->
             </div>
           </div>
         </template>
@@ -41,6 +43,9 @@ const defaultParticipants = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 
 export default {
   name: 'Single-elimination-diagram',
+  data: () => ({
+    participantNames: {}
+  }),
   props: {
     diagramSize: {
       type: Number,
