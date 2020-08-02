@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button @click="resetDiagramData">Reset diagram data</button>
+    <button
+      class="reset-button"
+      @click="resetDiagramData"
+    >
+      Reset diagram data
+    </button>
     {{ participantNames }}
     amountOfParticipants: {{ amountOfParticipants }}
     <div class="single-elimination-diagram-container">
@@ -86,6 +91,30 @@ export default {
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+.reset-button {
+  -webkit-appearance: none;
+  border: 1px solid #FB7943;
+  border-radius: 50px;
+  background-color: white;
+  padding: 10px 12px;
+  color: #FB7943;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.reset-button:hover {
+  background-color: #FB7943;
+  color: white;
+}
+
+.reset-button:active {
+  background-color: #ff5d17;
+  color: white;
 }
 
 .single-elimination-diagram-container {
