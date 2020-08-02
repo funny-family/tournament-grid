@@ -67,7 +67,7 @@ export default {
   },
   watch: {
     amountOfParticipants(value) {
-      if (value > 0) {
+      if (value > 0 || value === 0) {
         this.resetDiagramData();
       }
     }
