@@ -1,6 +1,6 @@
 <template>
   <input
-    class="numeric-input"
+    class="numeric-input-container"
     ref="numericInput"
     :placeholder="placeholder"
     :value="value"
@@ -48,10 +48,13 @@ input {
   box-sizing: border-box;
 }
 
-.numeric-input {
+.numeric-input-container {
   padding: 8px 12px;
   width: 300px;
   height: 40px;
   font-size: 18px;
+  border: 1px solid #FB7943;
+  border-radius: 8px;
+  outline: none;
 }
 </style>
