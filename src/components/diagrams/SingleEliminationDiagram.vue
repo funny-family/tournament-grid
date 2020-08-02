@@ -45,8 +45,7 @@ const defaultParticipants = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 export default {
   name: 'Single-elimination-diagram',
   data: () => ({
-    participantNames: {},
-    currentAmoutOfParticipants: 0
+    participantNames: {}
   }),
   props: {
     amountOfParticipants: {
