@@ -1,44 +1,49 @@
 <template>
-  <div class="single-elimination-diagram-container">
-    <template v-for="(participants, columnIndex) in columns">
-      <div
-        class="column"
-        :class="['column-' + columnIndex]"
-        :key="columnIndex"
+  <div>
+    <button @click="participantNames = {}">Reset diagram</button>
+    {{ participantNames }}
+    <div class="single-elimination-diagram-container">
+      <template
+        v-for="(participants, columnIndex) in columns"
       >
-        {{ participantNames }}
-        columns: {{ columns }}
-        <template v-for="(participantPosiitonInColumn, participantIndex) in participants">
-          <div
-            class="participant"
-            :class="['participant-' + participantIndex]"
-            :key="participantIndex"
-          >
-            <div class="participant__content">
-              <input
-                class="participant__content__input"
-                type="text"
-                v-model="participantNames[participantIndex]"
-                placeholder="Participant`s name"
-                v-if="Math.max(...columns) === participants"
-              />
-              <!-- <br/>
-              participantIndex: {{ participantIndex }}
-              <br/>
-              participantPosiitonInColumn: {{ participantPosiitonInColumn }}
-              <br/>
-              participants: {{ participants }}
-              <br/> -->
+        <div
+          class="column"
+          :class="['column-' + columnIndex]"
+          :key="columnIndex"
+        >
+          <template v-for="(participantPosiitonInColumn, participantInColumnIndex) in participants">
+            <div
+              class="participant"
+              :class="['participant-' + participantInColumnIndex]"
+              :key="participantInColumnIndex"
+            >
+              <div class="participant__content">
+                <input
+                  class="participant__content__input"
+                  type="text"
+                  :placeholder="[
+                    columnIndex,
+                    participantInColumnIndex,
+                    participantPosiitonInColumn
+                  ]"
+                  v-model="participantNames[
+                    columnIndex +
+                    participantInColumnIndex +
+                    participantPosiitonInColumn +
+                    participants +
+                    participants
+                  ]"
+                />
+              </div>
             </div>
-          </div>
-        </template>
-      </div>
-    </template>
+          </template>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
-const defaultMatches = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 const defaultParticipants = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 
 export default {
@@ -47,19 +52,16 @@ export default {
     participantNames: {}
   }),
   props: {
-    diagramSize: {
+    amountOfParticipants: {
       type: Number,
       default: 0
     }
   },
   computed: {
     columns() {
+      // console.log(this.$data.participantNames);
       return defaultParticipants
-        .filter((columns) => columns <= this.$props.diagramSize);
-    },
-    matches() {
-      return defaultMatches
-        .filter((currentMatches) => currentMatches <= Math.ceil(this.$props.diagramSize / 2));
+        .filter((columns) => columns <= this.$props.amountOfParticipants);
     }
   }
 };
