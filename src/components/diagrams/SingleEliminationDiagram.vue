@@ -1,7 +1,8 @@
 <template>
   <div>
-    <button @click="participantNames = {}">Reset diagram</button>
+    <button @click="resetDiagramData">Reset diagram data</button>
     {{ participantNames }}
+    amountOfParticipants: {{ amountOfParticipants }}
     <div class="single-elimination-diagram-container">
       <template
         v-for="(participants, columnIndex) in columns"
@@ -44,7 +45,8 @@ const defaultParticipants = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 export default {
   name: 'Single-elimination-diagram',
   data: () => ({
-    participantNames: {}
+    participantNames: {},
+    currentAmoutOfParticipants: 0
   }),
   props: {
     amountOfParticipants: {
@@ -56,6 +58,18 @@ export default {
     columns() {
       return defaultParticipants
         .filter((columns) => columns <= this.$props.amountOfParticipants);
+    }
+  },
+  methods: {
+    resetDiagramData() {
+      this.$data.participantNames = {};
+    }
+  },
+  watch: {
+    amountOfParticipants(value) {
+      if (value > 0) {
+        this.resetDiagramData();
+      }
     }
   }
 };
@@ -173,12 +187,12 @@ export default {
 
 .participant__content__input {
   -webkit-appearance: none;
-  max-width: 160px;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #b6b6b6;
   background-color: transparent;
   padding: 6px 4px;
-  margin: 4px;
+  margin: 4px 40px;
   font-size: 16px;
   outline: none;
   transition: 0.3s ease-in;
