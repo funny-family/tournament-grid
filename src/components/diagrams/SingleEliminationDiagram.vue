@@ -99,6 +99,7 @@ export default {
   border-radius: 50px;
   background-color: white;
   padding: 10px 12px;
+  margin: 12px 0;
   color: #FB7943;
   font-size: 16px;
   font-weight: 500;
