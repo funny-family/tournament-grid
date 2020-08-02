@@ -1,11 +1,17 @@
 <template>
-  <div class="home">
-    <Numeric-input
-      placeholder="256, 128, 64, 32, 16, 8, 4, 2, 1"
-      type="text"
-      v-model="stringInputValue"
+  <div>
+    <div class="home">
+      <Numeric-input
+        class="numeric-input"
+        placeholder="256, 128, 64, 32, 16, 8, 4, 2, 1"
+        type="text"
+        v-model="stringInputValue"
+      />
+    </div>
+    <Single-elimination-diagram
+      class="single-elimination-diagram"
+      :amountOfParticipants="approximateNumber"
     />
-    <Single-elimination-diagram :amountOfParticipants="numericInputValue" />
   </div>
 </template>
 
@@ -35,5 +41,18 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+.single-elimination-diagram {
+  margin: 0 12px;
+}
+
+.numeric-input {
+  margin: 20px 12px;
+}
 </style>
