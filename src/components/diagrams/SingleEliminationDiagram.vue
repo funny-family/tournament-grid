@@ -21,11 +21,6 @@
                 <input
                   class="participant__content__input"
                   type="text"
-                  :placeholder="[
-                    columnIndex,
-                    participantInColumnIndex,
-                    participantPosiitonInColumn
-                  ]"
                   v-model="participantNames[
                     columnIndex +
                     participantInColumnIndex +
@@ -59,7 +54,6 @@ export default {
   },
   computed: {
     columns() {
-      // console.log(this.$data.participantNames);
       return defaultParticipants
         .filter((columns) => columns <= this.$props.amountOfParticipants);
     }
@@ -163,6 +157,9 @@ export default {
 }
 
 .participant__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-width: 60px;
   height: 60px;
@@ -185,6 +182,7 @@ export default {
   font-size: 16px;
   outline: none;
   transition: 0.3s ease-in;
+  align-items: center;
 }
 
 .participant__content__input:focus {
