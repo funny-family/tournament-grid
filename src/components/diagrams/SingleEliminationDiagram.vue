@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="randomzeParticipants">Randomze participants</button>
     <button
       class="reset-button"
       @click="resetDiagramData"
@@ -45,6 +46,11 @@
 <script>
 const defaultParticipants = [256, 128, 64, 32, 16, 8, 4, 2, 1];
 
+let participantsContainer = [];
+let filteredParticipantsContainer = [];
+let inputValues = [];
+let filteredInputValues = [];
+
 export default {
   name: 'Single-elimination-diagram',
   data: () => ({
@@ -65,6 +71,35 @@ export default {
   methods: {
     resetDiagramData() {
       this.$data.participantNames = {};
+      participantsContainer = [];
+      inputValues = [];
+    },
+    getInputValues() {
+      for (const [inputId, inputValue] of Object.entries(this.$data.participantNames)) {
+        participantsContainer.push({
+          inputId,
+          inputValue
+        });
+      }
+      const key = 'inputId';
+
+      filteredParticipantsContainer = [
+        ...new Map(participantsContainer.map((item) => [item[key], item])).values()
+      ];
+      filteredParticipantsContainer.forEach((object) => {
+        inputValues.push(object.inputValue);
+      });
+      filteredInputValues = [...new Set(inputValues)];
+    },
+    shuffleInputValues(array) {
+      array.sort(() => Math.random() - 0.5);
+    },
+    randomzeParticipants() {
+      this.getInputValues();
+      this.shuffleInputValues(filteredInputValues);
+      console.log('randomized array', filteredInputValues);
+      console.log('participantNames', this.$data.participantNames);
+      console.log('shiit', this.$data.participantNames = filteredInputValues);
     }
   },
   watch: {
@@ -73,6 +108,11 @@ export default {
         this.resetDiagramData();
       }
     }
+    // participantNames(value) {
+    //   participantsContainer.push(value);
+    //   console.log(participantsContainer);
+    //   // console.log(value);
+    // }
   }
 };
 </script>
