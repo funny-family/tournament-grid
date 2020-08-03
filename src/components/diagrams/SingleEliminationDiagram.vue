@@ -99,7 +99,6 @@ export default {
       this.shuffleInputValues(filteredInputValues);
       console.log('randomized array', filteredInputValues);
       console.log('participantNames', this.$data.participantNames);
-      console.log('shiit', this.$data.participantNames = filteredInputValues);
     }
   },
   watch: {
