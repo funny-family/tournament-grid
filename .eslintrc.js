@@ -11,6 +11,9 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
+    'no-plusplus': 'off',
+    'guard-for-in': 'off',
+    'no-restricted-syntax': 'off',
     camelcase: 'off',
     'func-names': ['off', 'never'],
     'comma-dangle': ['error', 'never'],
