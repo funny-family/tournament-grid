@@ -6,8 +6,6 @@
     >
       Reset diagram data
     </button>
-    {{ participantNames }}
-    amountOfParticipants: {{ amountOfParticipants }}
     <div class="single-elimination-diagram-container">
       <template
         v-for="(participants, columnIndex) in columns"
